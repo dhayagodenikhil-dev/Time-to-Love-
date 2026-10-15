@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#fff4f7">
+<title>You & Shambhavi ❤️</title>
+<style>
+:root{color-scheme:light;--pink:#d94673;--ink:#432a35;--muted:#896d79;--card:#fff;--bg:#fff4f7}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(circle at top,#ffe1ea 0, var(--bg) 48%,#fff 100%);font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:var(--ink);display:grid;place-items:center;padding:22px}
+main{width:min(100%,520px);text-align:center}.heart{font-size:56px;line-height:1.2;filter:drop-shadow(0 5px 10px #d9467330)}h1{font-size:clamp(28px,7vw,42px);margin:10px 0 6px;letter-spacing:-1px}.sub{color:var(--muted);margin:0 0 26px}.since{font-size:14px;color:var(--muted);background:#ffffffb8;border:1px solid #f5d5df;border-radius:999px;display:inline-block;padding:9px 14px;margin-bottom:20px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.tile{background:var(--card);border:1px solid #f5d5df;border-radius:20px;padding:20px 10px;box-shadow:0 8px 25px #a23e6010}.num{font-size:clamp(30px,8vw,44px);font-weight:750;letter-spacing:-1.5px;font-variant-numeric:tabular-nums;color:var(--pink);line-height:1.15}.label{font-size:13px;color:var(--muted);margin-top:7px;text-transform:uppercase;letter-spacing:1.1px}.footer{font-size:13px;color:var(--muted);margin:24px 0 0}.smallheart{color:var(--pink)}
+</style></head>
+<body><main><div class="heart">❤️</div><h1>You &amp; Shambhavi</h1><p class="sub">Every second, a little more love.</p><div class="since">Together since 23 November 2025 · 12:00 AM IST</div><section class="grid" aria-live="off">
+<div class="tile"><div class="num" id="years">0</div><div class="label">Years</div></div>
+<div class="tile"><div class="num" id="months">0</div><div class="label">Months</div></div>
+<div class="tile"><div class="num" id="days">0</div><div class="label">Days</div></div>
+<div class="tile"><div class="num" id="hours">00</div><div class="label">Hours</div></div>
+<div class="tile"><div class="num" id="minutes">00</div><div class="label">Minutes</div></div>
+<div class="tile"><div class="num" id="seconds">00</div><div class="label">Seconds</div></div>
+</section><p class="footer"><span class="smallheart">♥</span> Counting from your special moment, in India time.</p></main>
+<script>
+const start = new Date('2025-11-23T00:00:00+05:30');
+const pad = n => String(n).padStart(2,'0');
+function addMonths(date, count){const d=new Date(date);const day=d.getDate();d.setDate(1);d.setMonth(d.getMonth()+count);const last=new Date(d.getFullYear(),d.getMonth()+1,0).getDate();d.setDate(Math.min(day,last));return d;}
+function update(){const now=new Date();if(now<start)return;let years=now.getFullYear()-start.getFullYear();let anchor=addMonths(start,years*12);if(anchor>now){years--;anchor=addMonths(start,years*12)}let months=0;while(months<11&&addMonths(anchor,months+1)<=now)months++;anchor=addMonths(anchor,months);let days=Math.floor((now-anchor)/86400000);let remainder=now-anchor-days*86400000;let hours=Math.floor(remainder/3600000);remainder-=hours*3600000;let minutes=Math.floor(remainder/60000);let seconds=Math.floor((remainder-minutes*60000)/1000);document.getElementById('years').textContent=years;document.getElementById('months').textContent=months;document.getElementById('days').textContent=days;document.getElementById('hours').textContent=pad(hours);document.getElementById('minutes').textContent=pad(minutes);document.getElementById('seconds').textContent=pad(seconds)}
+update();setInterval(update,1000);
+</script></body></html>
